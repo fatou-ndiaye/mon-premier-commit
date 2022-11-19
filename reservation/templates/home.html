@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</br>
+
+<h1> la liste  des vols est</h1>
+</br>
+<table border="1">
+    <tr><td>id</td>
+        <td>prix</td>
+        <td>date</td>
+        <td>heure</td>
+        <td>trajet</td>
+        <td>liste compagnie</td>
+        
+    </tr>
+{%for vol in vol %}
+
+    <tr>
+        <td> <a href="{%url 'detail' vol.id %} " >{{vol.id}}</a></td>
+        <td>{{vol.prix}}</td>
+        <td>{{vol.date}}</td>
+        <td>{{vol.heure}}</td>
+        <td>{{vol.trajet}}</td>
+        <td>{% for vol in vol.compagnie_set.all %}
+        
+            <a href="{%url 'detailcompagnie' vol.id %} " >{{vol.nom}} </br> </a> 
+        
+
+            {%endfor%}
+        </td>
+        
+
+    </tr>
+    {%endfor%}
+
+</br>
+
+</body>
+</html>
